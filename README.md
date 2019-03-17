@@ -1,14 +1,25 @@
 # HotTips-3000
 DIY Spot Welder made with an Arduino and a Microwave transformer.
 
+Currently under construction.
+
 Please use caution while dealing with mains voltage :)
 
   Parts Include:
-  - Microwave transformer, secondary rewound with single turn 70mm^2 stranded copper
+  - Microwave transformer
+    - secondary rewound with single turn 70mm^2 stranded copper, coated with heatshrink.
   - ArduinoProMini
-  - OLED Display, Potentiometer, Pushbutton, LED's x2, resistor x2, some wires and perfboard
+  - OLED Display
+  - Potentiometer
+  - Pushbutton
+  - Green and red LEDs
+  - 220 Ohm resistor x3
+  - Wires and heatshrink
+    - For Mains voltage and DC circuitry
+  - 50mm x 70mm perfboard
   - 5VDC 850mA switch mode USB power supply
-  - 40 Ampere 24-380VAC Solid state relay (3-30VDC input)
+  - Solid state relay 
+    - 40 Ampere 24-380VAC (3-30VDC input)
   - Powercord, powerswitch, and enclosure
 
 Some code my own @intentionalrobots
