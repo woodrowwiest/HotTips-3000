@@ -3,7 +3,7 @@ DIY Spot Welder made with an Arduino and a Microwave transformer.
 
 Currently under construction.
 
-Please use caution while dealing with mains voltage :)
+# Please use caution while dealing with mains voltage :)
 
   Parts Include:
   - Microwave transformer
