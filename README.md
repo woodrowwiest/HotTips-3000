@@ -24,6 +24,8 @@ Currently under construction.
 
 Some code my own @intentionalrobots
   Woodrow Wiest - https://www.instagram.com/intentionalrobots/
+            git - https://github.com/woodrowwiest/HotTips-3000
+        arduino - https://create.arduino.cc/projecthub/woodrowwiest/hottips-3000-94f4a8/embed?use_route=project
   
 
 
