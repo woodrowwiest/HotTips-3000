@@ -24,14 +24,15 @@ Would love to see if you make one!
 */
 
 
-#include "U8glib.h"
+
+#include "U8glib.h"                                   // For writing to OLED Display
 
 U8GLIB_SSD1306_128X64 u8g(U8G_I2C_OPT_NONE|U8G_I2C_OPT_DEV_0);	// I2C / TWI 
 
-const int potPin = 0;                     // analog pin used to connect the potentiometer
-int potVal;                               // variable to read the value from the analog pin
+const int potPin = 0;                                 // analog pin used to connect the potentiometer
+int potVal;                                           // variable to read the value from the analog pin
 
-const int triggerPin = 2;
+const int triggerButtonPin = 2;
 int triggerSwitch = 0;
 const int relayPin = 3;
 const int redLED = 9;
@@ -39,16 +40,11 @@ const int greenLED = 8;
 int stringWidth = 0;
 
 
-void setup(void) {
-  // flip screen, if required
-  // u8g.setRot180();
-  
-  // set SPI backup if required
-  //u8g.setHardwareBackup(u8g_backup_avr_spi);
+void setup(void) {                                    // Setup runs first and only once
 
   // assign default color value
   if ( u8g.getMode() == U8G_MODE_R3G3B2 ) {
-    u8g.setColorIndex(255);                           // white
+    u8g.setColorIndex(255);                          // white
   }
   else if ( u8g.getMode() == U8G_MODE_GRAY2BIT ) {
     u8g.setColorIndex(3);                            // max intensity
@@ -60,19 +56,19 @@ void setup(void) {
     u8g.setHiColorByRGB(255,255,255);
   }
 
-  pinMode(triggerPin, INPUT);
-  pinMode(relayPin, OUTPUT);
-  pinMode(redLED, OUTPUT);
-  pinMode(greenLED, OUTPUT);
+pinMode(triggerButtonPin, INPUT);
+pinMode(relayPin, OUTPUT);
+pinMode(redLED, OUTPUT);
+pinMode(greenLED, OUTPUT);
 
-  digitalWrite(greenLED, HIGH);
-  digitalWrite(redLED, LOW);
+digitalWrite(greenLED, HIGH);                     // Initialize with green LED illuminated and red off
+digitalWrite(redLED, LOW);
   
 }
 
 
-void loop(void) {
-  u8g.firstPage();                            // picture loop  
+void loop(void) {                                 // Loop runs over and over forever.
+  u8g.firstPage();                                // picture loop  
   do {
     draw();
   } while( u8g.nextPage() );
@@ -80,45 +76,45 @@ void loop(void) {
   // rebuild the picture after some delay
   //delay(50);
             
-  potVal = analogRead(potPin);                // reads the value of the potentiometer (value between 0 and 1023)
-  potVal = map(potVal, 0, 1023, 10, 500);     // scale it to use it get the right time (value between 10 and 500)
+  potVal = analogRead(potPin);                    // reads the value of the potentiometer (value between 0 and 1023)
+  potVal = map(potVal, 0, 1023, 10, 500);         // scale it to use it get the right time (value between 10 and 500)
 
-  triggerSwitch = digitalRead(triggerPin);
+  triggerSwitch = digitalRead(triggerButtonPin);  // Read the trigger button to see if its pressed
 
-  if (triggerSwitch == HIGH){                 // Double pulse with small delay in between
-        digitalWrite(relayPin, HIGH);
+  if (triggerSwitch == HIGH){                     // Double pulse with small delay in between
+        digitalWrite(relayPin, HIGH);             // First Pulse
         lightRed();
-        delay(potVal);
+        delay(potVal);                            // milliseconds of Potentiometer Value.
         
         digitalWrite(relayPin, LOW);
         lightGreen();
-        delay(35);
+        delay(35);                                // Fixed delay between double pulse
         
-        digitalWrite(relayPin, HIGH);
+        digitalWrite(relayPin, HIGH);             // Second Pulse
         lightRed();
-        delay(potVal);
+        delay(potVal);                            // milliseconds of Potentiometer Value.
                 
-        digitalWrite(relayPin, LOW);          // !!! - CAUTION - !!!
-        lightGreen();                         // Keep in mind the weld will restart if the button stays pressed.
-        delay(1000);                          // Gives the welder at least a 1 second rest between welds
+        digitalWrite(relayPin, LOW);              // !!! - CAUTION - !!!
+        lightGreen();                             // Keep in mind the weld will restart if the button stays pressed.
+        delay(1000);                              // Gives the welder at least a 1 second rest between welds.
   }
   
 }
 
 
-void draw(void) {                           // graphic commands to redraw the complete screen
+void draw(void) {                                 // graphic commands to redraw the complete screen
   u8g.setFont(u8g_font_unifont);
-  u8g.drawStr( 5, 10, "Fancy Woodrow's"); 
+  u8g.drawStr( 17, 10, "HotTips-3000"); 
   u8g.setScale2x2();
   u8g.setPrintPos(10,20);
   u8g.print(potVal );
   u8g.drawStr( 40, 20, "ms");
   u8g.undoScale();
-  u8g.drawStr( 17, 60, "HotTips-3000");      
+  u8g.drawStr( 2, 60, "#intentionalrobot");      
 }
 
 
-void lightRed() {
+void lightRed() {                                 // functions for illuminating LEDs
   digitalWrite(redLED, HIGH);
   digitalWrite(greenLED, LOW);
 }
