@@ -11,13 +11,15 @@ Please use caution while dealing with mains voltage :)
   - 40 Ampere 24-380VAC Solid state relay (3-30VDC input)
   - Powercord, powerswitch, and enclosure
 
-Some code my own @intentionalrobots
+Most code my own @intentionalrobots
   Woodrow Wiest - https://www.instagram.com/intentionalrobots/
-  
-Much inspiration gleaned from:
+
+
+Many thanks and much inspiration gleaned from:
   Spot Welder Timer Example
   Check out the instructable here - http://www.instructables.com/id/DIY-Spot-Welder-From-Microwave/  
   Jack Davies, http://jackdaviesdesign.com <<< >>> http://undergroundengineering.co.uk
+
 
 Would love to see if you make one!
   wwiest@gmail.com 
@@ -105,11 +107,11 @@ const int relayPin = 3;                               // Relay on pin 3 - with r
 const int redLED = 9;                                 // Red LED on pin 9 - with resistor to ground
 const int greenLED = 8;                               // Green LED on pin 8 - with resistor to ground
 
-int triggerSwitch = 0;
+int triggerSwitch = 0;                                // Variables to store data
 int stringWidth = 0;
 
 
-void setup(void) {                                    // Setup runs first and only once
+void setup() {                                    // Setup runs first and only once
 
 //  // assign default color value
 //  if ( u8g.getMode() == U8G_MODE_R3G3B2 ) {
@@ -142,7 +144,7 @@ digitalWrite(redLED, LOW);
 }
 
 
-void loop(void) {                                 // Loop runs over and over forever.
+void loop() {                                 // Loop runs over and over forever.
   u8g.firstPage();                                // picture loop  
   do {
     draw();
@@ -179,7 +181,7 @@ void drawFirst() {
 }
 
 
-void draw(void) {                                 // graphic commands to redraw the complete screen
+void draw() {                                 // graphic commands to redraw the complete screen
   u8g.setFont(u8g_font_tpss);
   u8g.drawStr( 0, 10, "HotTips-3000"); 
   u8g.drawRFrame(0, 16, 128, 34, 4);              // (x pos, y pos, width, height, corner radius)
