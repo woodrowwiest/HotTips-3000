@@ -111,21 +111,7 @@ int triggerSwitch = 0;                                // Variables to store data
 int stringWidth = 0;
 
 
-void setup() {                                    // Setup runs first and only once
-
-//  // assign default color value
-//  if ( u8g.getMode() == U8G_MODE_R3G3B2 ) {
-//    u8g.setColorIndex(255);                          // white
-//  }
-//  else if ( u8g.getMode() == U8G_MODE_GRAY2BIT ) {
-//    u8g.setColorIndex(3);                            // max intensity
-//  }
-//  else if ( u8g.getMode() == U8G_MODE_BW ) {
-//    u8g.setColorIndex(1);                            // pixel on
-//  }
-//  else if ( u8g.getMode() == U8G_MODE_HICOLOR ) {
-//    u8g.setHiColorByRGB(255,255,255);
-//  }
+void setup() {                                        // Setup runs first and only once
 
 pinMode(triggerButtonPin, INPUT);
 pinMode(relayPin, OUTPUT);
@@ -144,7 +130,7 @@ digitalWrite(redLED, LOW);
 }
 
 
-void loop() {                                 // Loop runs over and over forever.
+void loop() {                                     // Loop runs over and over forever.
   u8g.firstPage();                                // picture loop  
   do {
     draw();
@@ -163,14 +149,14 @@ void loop() {                                 // Loop runs over and over forever
         
         digitalWrite(relayPin, LOW);
         lightGreen();
-        delay(35);                                // Fixed delay between double pulse
+        delay(100);                                // Fixed delay between double pulse
         
         digitalWrite(relayPin, HIGH);             // Second Pulse
         lightRed();
         delay(potVal);                            // milliseconds of Potentiometer Value.
                 
         digitalWrite(relayPin, LOW);              // !!! - CAUTION - !!!
-        lightGreen();                             // Keep in mind the weld will restart if the button stays pressed.
+        lightGreen();                             // Weld will restart if the button remains pressed for more than 1000ms.
         delay(1000);                              // Gives the welder at least a 1 second rest between welds.
   }
   
@@ -181,7 +167,7 @@ void drawFirst() {
 }
 
 
-void draw() {                                 // graphic commands to redraw the complete screen
+void draw() {                                     // graphic commands to redraw the complete screen
   u8g.setFont(u8g_font_tpss);
   u8g.drawStr( 0, 10, "HotTips-3000"); 
   u8g.drawRFrame(0, 16, 128, 34, 4);              // (x pos, y pos, width, height, corner radius)
