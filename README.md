@@ -22,7 +22,7 @@ Currently under construction.
     - 40 Ampere 24-380VAC (3-30VDC input)
   - Powercord, powerswitch, and enclosure
 
-Some code my own @intentionalrobots
+Most code my own @intentionalrobots
   Woodrow Wiest - https://www.instagram.com/intentionalrobots/
             git - https://github.com/woodrowwiest/HotTips-3000
         arduino - https://create.arduino.cc/projecthub/woodrowwiest/hottips-3000-94f4a8/embed?use_route=project
