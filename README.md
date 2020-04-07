@@ -1,7 +1,9 @@
 # HotTips-3000
 DIY Spot Welder made with an Arduino and a Microwave transformer.
 
-Currently under construction.
+TODO:
+1. Debounce the switch
+2. Build electrode holders
 
 # Please use caution while dealing with mains voltage :)
 
