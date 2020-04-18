@@ -4,6 +4,7 @@ DIY Spot Welder made with an Arduino and a Microwave transformer.
 TODO:
 1. Debounce the switch
 2. Build electrode holders
+3. Add foot pedal switch
 
 # Please use caution while dealing with mains voltage :)
 
